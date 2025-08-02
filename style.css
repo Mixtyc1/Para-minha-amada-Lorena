@@ -1,93 +1,70 @@
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom right, #ffe6f0, #fff0f5);
+  background: linear-gradient(to right, #ffdde1, #ee9ca7);
   font-family: 'Georgia', serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
   overflow: hidden;
 }
 
 .envelope {
   width: 300px;
   height: 200px;
-  position: relative;
-  perspective: 1000px;
-  cursor: pointer;
+  background: #fff;
+  border: 2px solid #d33;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transform: rotateX(90deg);
+  animation: abrirCarta 3s forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.tampa {
-  width: 100%;
-  height: 50%;
-  background-color: #ffcad4;
-  position: absolute;
-  top: 0;
-  transform-origin: bottom;
-  transition: transform 1.2s ease;
-  z-index: 3;
-}
-
-.corpo {
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  position: absolute;
-  top: 0;
-  z-index: 1;
-  border: 2px solid #ff99aa;
-  border-radius: 5px;
-}
-
-.papel {
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  position: absolute;
-  top: 0;
-  z-index: 2;
-  display: none;
+.card {
   padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto;
+  text-align: center;
 }
 
-.carta {
-  animation: fadein 1.5s ease;
+.text {
+  opacity: 0;
+  transition: opacity 2s ease-in;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
 }
 
-.carta h1 {
-  font-size: 1.5em;
-  color: #3e1f47;
-  margin-bottom: 10px;
+@keyframes abrirCarta {
+  to {
+    transform: rotateX(0deg);
+  }
 }
 
-.carta p {
-  font-size: 1.1em;
-  line-height: 1.6em;
-  color: #3e1f47;
+.coracoes {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
-.assinatura {
-  text-align: right;
-  margin-top: 20px;
-  font-style: italic;
+.coracao {
+  position: absolute;
+  color: red;
+  animation: subir 4s linear forwards;
+  font-size: 20px;
+  opacity: 0.8;
 }
 
-@keyframes fadein {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes subir {
+  to {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
 }
-
-.envelope.aberta .tampa {
-  transform: rotateX(-180deg);
-}
-
-.envelope.aberta .papel {
-  display: block;
-}
-
 
 
 
