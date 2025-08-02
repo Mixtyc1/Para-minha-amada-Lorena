@@ -1,52 +1,68 @@
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom right, #ffe6f0, #fff0f5);
+  background: radial-gradient(circle, #ffe6f0, #fff0f5);
   font-family: 'Georgia', serif;
-  color: #3e1f47;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
   overflow: hidden;
 }
 
+.envelope {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.tampa, .corpo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f78da7;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 1.5s ease;
+  z-index: 2;
+}
+
+.tampa {
+  transform-origin: bottom;
+  background: #ff9ebf;
+}
+
+.mensagem {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  z-index: 1;
+  overflow-y: auto;
+}
+
 .carta {
-  background-color: #fff;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  max-width: 700px;
-  animation: aparecer 2s ease-out;
-}
-
-h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-p {
-  font-size: 1.2em;
-  line-height: 1.8em;
-  margin-bottom: 20px;
-}
-
-.assinatura {
-  text-align: right;
-  font-style: italic;
-  margin-top: 30px;
+  animation: aparecer 1s ease forwards;
+  opacity: 0;
 }
 
 @keyframes aparecer {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  to {
+    opacity: 1;
+  }
 }
 
 .coração {
   position: absolute;
   font-size: 24px;
   color: #ff5ea0;
-  animation: flutuar 5s infinite ease-in-out;
+  animation: flutuar 5s ease-in-out infinite;
   user-select: none;
 }
 
@@ -54,4 +70,11 @@ p {
   0% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(-200px); opacity: 0; }
 }
+
+.assinatura {
+  text-align: right;
+  font-style: italic;
+  margin-top: 20px;
+}
+
 
